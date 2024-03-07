@@ -1,8 +1,10 @@
 const express = require('express');
-const { homePingcontroller } = require('../controllers/home.controller');
+const v1router = require('./v1/index');
+const v2router = require('./v2');
 
-const router = express.Router(); // created a express router object
+const apirouter = express.Router(); // created a express router object
 
-router.get('/home', homePingcontroller);
+apirouter.use('/v1', v1router); // /v1/home
+apirouter.use('/v2', v2router); // v2/home
 
-module.exports = router;
+module.exports = apirouter;
